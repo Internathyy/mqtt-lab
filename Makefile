@@ -20,4 +20,4 @@ clean:
 # Quick smoke-test: subscribe for 15 seconds using the CLI tool
 test:
 	@echo "Listening on mqtt-lab/test/sensor for 15 seconds..."
-	mosquitto_sub -h test.mosquitto.org -t "mqtt-lab/test/sensor" -v -W 15 || true
+	mosquitto_sub -h localhost -t "mqtt-lab/test/sensor" -v -W 15 || true
