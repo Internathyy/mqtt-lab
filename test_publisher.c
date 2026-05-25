@@ -17,6 +17,33 @@
 #define MSG_COUNT   5
 #define INTERVAL_S  2
 
+
+typedef struct{
+    int seq;
+    char station_id[21];
+    char timestamp[21];
+    float temperature_c;
+    float humidity_pct;
+}SensorReading;
+
+
+//serialize struct to json format
+
+int serialize_to_json(const SensorReading* r, char* buf, size_t buf_len){
+    
+    if (buf == NULL) {
+        printf("Error: Buffer is Null \n");
+        return -1;
+    }
+
+    if (buf_len < 80){
+        printf("Error: Buffer is to short \n");
+        return -1;
+    }
+
+    snprintf("seq: %i \n station_id: %s \n timestamp: %s temperature_c: %f \n humidity_pct: %f \n", seq, station_id, timestamp, temperature_c, humidity_pct);
+}
+
 /* Generate a simple JSON payload with dummy sensor data */
 static void build_payload(char *buf, size_t len, int seq) {
     time_t now = time(NULL);
